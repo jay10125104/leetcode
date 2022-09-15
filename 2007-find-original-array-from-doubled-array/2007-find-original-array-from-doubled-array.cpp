@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> findOriginalArray(vector<int>& v) {
-        map<int,int>m;
+        unordered_map<int,int>m;
         sort(v.begin(),v.end());
         vector<int>ans;
         for(auto i:v){
