@@ -35,6 +35,7 @@ public:
             return 1;
         }
         int ans=0;
+        // pair->{req , has camera};
         auto mid = sol(root,ans);
         // cout<<mid.first<<" "<<mid.second<<endl;
         return ans + mid.first;
