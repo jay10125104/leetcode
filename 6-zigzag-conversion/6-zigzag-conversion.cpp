@@ -11,9 +11,6 @@ public:
             return s;
         }
         for(int i=0;i<s.size();i++){
-            
-            
-            
             if( (c%x==0)){
                 flag=1;
             }
