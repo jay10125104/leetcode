@@ -1,7 +1,6 @@
 struct node{
     node*links[26];
     int flag=false;
-    string str="";
 };
 class Trie {
 public:
@@ -18,7 +17,6 @@ public:
             }
             temp = temp->links[s[i]-'a'];
         }
-        temp->str =s;
         temp->flag++;
     }
     
@@ -32,7 +30,6 @@ public:
         int idx=0;
         int count=0;
         while(idx<s.size()&&q.size()){
-           
             int x = q.size();  
             while(x--){
                 auto it = q.front();
