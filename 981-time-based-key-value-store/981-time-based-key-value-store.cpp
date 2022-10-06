@@ -6,8 +6,7 @@ public:
     map<string,vector<pair<string,int>>>m;
     TimeMap() {
         
-    }
-    
+    }    
     void set(string key, string value, int timestamp) {
         m[key].push_back({value,timestamp});
     }
