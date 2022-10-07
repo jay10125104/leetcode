@@ -80,7 +80,6 @@ public:
     }
     
     bool book(int start, int end) {
-        // cout<<se->query(root,0,1000000001,start,end-1)<<" ";
         if(se->query(root,0,1000000001,start,end-1)==2){
             return false;
         }
