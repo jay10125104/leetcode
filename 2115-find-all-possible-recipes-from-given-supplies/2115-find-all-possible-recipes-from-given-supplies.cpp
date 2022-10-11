@@ -39,7 +39,6 @@ public:
             }
         }
         queue<int>q;
-        
         for(int i=0;i<count;i++){
             if(sup[i] && indegree[i]==0){
                 q.push(i);
