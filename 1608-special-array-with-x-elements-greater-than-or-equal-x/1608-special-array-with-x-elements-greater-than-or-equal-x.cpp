@@ -6,9 +6,6 @@ public:
             if(nums[i]>=mid){
                 count++;
             }
-            else{
-                break;
-            }
         }
         flag=count;
         return count>=mid;
@@ -17,8 +14,6 @@ public:
     int specialArray(vector<int>& nums) {
         int ans=-1;
         int low = 1;
-        sort(nums.begin(),nums.end());
-        reverse(nums.begin(),nums.end());
         int high = nums.size();
         while(low<=high){
             int mid = (low+high)/2;
