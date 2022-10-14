@@ -50,21 +50,21 @@ public:
         cout<<n<<endl;
         unionfind ui = unionfind(n*n);
         for(int i=1;i<n;i++){
-            cout<<i<<" "<<i-1<<endl;
+            // cout<<i<<" "<<i-1<<endl;
             ui.unionthem(i-1,i);
         }
         for(int j=1;j<n;j++){
-            cout<<n*j<<" "<<(n*(j-1))<<endl; 
+            // cout<<n*j<<" "<<(n*(j-1))<<endl; 
             ui.unionthem(n*j,(n*(j-1)));
         }
         for(int i=1;i<n;i++){
             int u = s.size()*(s.size()+1) + i;
-            cout<<u<<" "<<u-1<<endl;
+            // cout<<u<<" "<<u-1<<endl;
             ui.unionthem(u,u-1);
         }
          for(int i=1;i<n;i++){
             int u = (i+1)*n - 1;
-             cout<<u<<" "<<u-n<<endl;
+             // cout<<u<<" "<<u-n<<endl;
             ui.unionthem(u,u-n);
         }
         for(int i=0;i<s.size();i++){
