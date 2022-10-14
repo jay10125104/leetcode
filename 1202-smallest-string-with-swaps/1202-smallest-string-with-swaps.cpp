@@ -18,7 +18,7 @@ public:
             adj[i[0]].push_back(i[1]);
             adj[i[1]].push_back(i[0]);
         }
-        map<int,char>m;
+       string ans = string('*',s.size());
         for(int i=0;i<n;i++){
             if(visited[i]==0){
                 vector<char>c;
@@ -27,14 +27,11 @@ public:
                 sort(c.begin(),c.end());
                 sort(idx.begin(),idx.end());
                 for(int j=0;j<idx.size();j++){
-                    m[idx[j]] = c[j];
+                    s[idx[j]] = c[j];
                 }
             }
         }
-        string ans="";
-        for(int i=0;i<s.size();i++){
-            ans+=m[i];
-        }
-        return ans;
+        
+        return s;
     }
 };
