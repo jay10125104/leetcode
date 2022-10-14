@@ -16,7 +16,9 @@ public:
                 int x = q.front();
                 q.pop();
                 for(auto it:adj[x]){
-                    if(visited[i][it]==0){
+                    if(vis[it]==0){
+                        //it its already marked then it is sure that it has already mark them up;
+                        vis[it]=1;
                         visited[i][it]=1;
                         q.push(it);
                     }
