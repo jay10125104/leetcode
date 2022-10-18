@@ -28,16 +28,7 @@ public:
                 return true;
             }
             else{
-                if(rank[u]==rank[v]){
-                    parent[u]=v;
-                    rank[v]++;
-                }
-                else if(rank[u]>rank[v]){
-                    parent[v] = u;
-                }
-                else{
-                    parent[u] = v;
-                }
+                parent[u] = v;
                 return false;
                 
             }
@@ -47,7 +38,7 @@ public:
         int ans=0;
         cout<<s[0];
         int n = s.size()+1;
-        cout<<n<<endl;
+        // cout<<n<<endl;
         unionfind ui = unionfind(n*n);
         for(int i=1;i<n;i++){
             // cout<<i<<" "<<i-1<<endl;
