@@ -14,13 +14,13 @@ public:
     }
     int reachableNodes(int n, vector<vector<int>>& v, vector<int>& r) {
         vector<int>adj[n];
-        for(auto i:v){
+        for(auto &i:v){
             adj[i[0]].push_back(i[1]);
             adj[i[1]].push_back(i[0]);
         }
         vector<int>visited(n);
         map<int,int>m;
-        for(auto i:r){
+        for(auto &i:r){
             m[i]++;
         }
         dfs(adj,0,visited,m);
