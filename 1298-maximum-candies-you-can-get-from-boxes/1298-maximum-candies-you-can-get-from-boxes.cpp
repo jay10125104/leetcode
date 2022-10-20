@@ -19,9 +19,13 @@ public:
             int x = q.front();
             q.pop();
             // cout<<x<<" ";
+            if(visited[x]==1){
+                continue;
+            }
             if(s.count(x)){
                 ans+=candies[x];
                 candies[x]=0;
+                visited[x]=1;
             }
             else{
                 prev[x]=1;
