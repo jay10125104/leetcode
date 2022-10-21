@@ -4,13 +4,6 @@ public:
         int m=v.size();
         int n=v[0].size();
         int dp[m][n][k+1];
-        // for(int i=0;i<m;i++){
-        //     for(int j=0;j<n;j++){
-        //         for(int t=0;t<=k;t++){
-        //             dp[i][j][t]=0;
-        //         }
-        //     }
-        // }
         memset(dp,0,sizeof(dp));
         queue<vector<int>>q;
         q.push({0,0,0,k});
@@ -20,7 +13,7 @@ public:
         while(!q.empty()){
             auto it = q.front();
             q.pop();
-            dp[it[0]][it[1]][it[3]]=1;
+            // dp[it[0]][it[1]][it[3]]=1;
             if(it[0]==m-1 && it[1]==n-1){
                 return it[2];
             }
