@@ -17,6 +17,7 @@ public:
         while(q.size()){
             int x = q.size();
             while(x--){
+                cout<<x<<endl;
             auto it = q.front();
             q.pop();
             visited[it[0]][it[1]]=1;
