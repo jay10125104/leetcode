@@ -41,7 +41,7 @@ public:
             }
         }
         vector<bool>ans;
-        for(auto i:q){
+        for(auto &i:q){
             if(u.find(i[0])==u.find(i[1])){
                 ans.push_back(true);
             }
