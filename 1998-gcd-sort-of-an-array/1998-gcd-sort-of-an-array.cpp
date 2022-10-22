@@ -41,7 +41,7 @@ public:
     }
     for (int i = 3; i <= sqrt(n); i = i + 2)
     {
-        // While i divides n, print i and divide n
+        
         if(n%i==0){
             u.Union(j,i);
         }
@@ -51,9 +51,6 @@ public:
             n = n/i;
         }
     }
- 
-    // This condition is to handle the case when n
-    // is a prime number greater than 2
     if (n > 2){
         u.Union(j,n);
     }
