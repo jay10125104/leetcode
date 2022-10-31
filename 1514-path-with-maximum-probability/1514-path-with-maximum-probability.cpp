@@ -6,7 +6,7 @@ public:
             adj[edges[i][0]].push_back({edges[i][1],s[i]});
             adj[edges[i][1]].push_back({edges[i][0],s[i]});
         }
-        vector<double>dis(n);
+        vector<float>dis(n);
         priority_queue<pair<double,int>>q;
         q.push({1,start});
         while(q.size()){
@@ -18,7 +18,7 @@ public:
             }
             dis[it.second] = it.first;
             for(auto i:adj[it.second]){
-                double mid = (double)(it.first*i.second);
+                float mid = (double)(it.first*i.second);
                 
                 if((mid)>dis[i.first]){
                     q.push({mid,i.first});
