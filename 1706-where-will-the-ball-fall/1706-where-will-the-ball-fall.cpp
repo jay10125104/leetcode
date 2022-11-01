@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void dfs(vector<vector<int>>&v,int i,int j,char x,vector<vector<int>>&visited,int &ans){
+    void dfs(vector<vector<int>>&v,int i,int j,char x,int &ans){
         if(i<0 || j<0 || j==v[0].size()){
             return;
         }
@@ -15,16 +15,16 @@ public:
             return;
         }
         if(v[i][j]==1 && x=='U'){
-            dfs(v,i,j+1,'R',visited,ans);
+            dfs(v,i,j+1,'R',ans);
         }
         if(v[i][j]==1 && x=='R'){
-            dfs(v,i+1,j,'U',visited,ans);
+            dfs(v,i+1,j,'U',ans);
         }
         if(v[i][j]==-1 && x=='U'){
-            dfs(v,i,j-1,'L',visited,ans);
+            dfs(v,i,j-1,'L',ans);
         }
         if(v[i][j]==-1 && x=='L'){
-            dfs(v,i+1,j,'U',visited,ans);
+            dfs(v,i+1,j,'U',ans);
         }
         
     }
@@ -34,8 +34,8 @@ public:
         vector<int>ans;
         for(int i=0;i<n;i++){
             int sol=-1;
-            vector<vector<int>>visited(m,vector<int>(n,0));
-            dfs(v,0,i,'U',visited,sol);
+            // vector<vector<int>>visited(m,vector<int>(n,0));
+            dfs(v,0,i,'U',sol);
             ans.push_back(sol);
         }
         return ans;
