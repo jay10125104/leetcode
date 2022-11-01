@@ -38,11 +38,11 @@ public:
         int ans=0;
         unionfind u = unionfind(v.size());
         vector<int>active(v.size());
-        for(auto it:m){
+        for(auto &it:m){
             int x = it.first;
             for(auto &j:it.second){
                 active[j]=1;
-            for(auto i:adj[j]){
+            for(auto &i:adj[j]){
                 if(active[i]==1){
                     // cout<<it.first<<" "<<
                     u.Union(i,j);
