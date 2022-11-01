@@ -37,7 +37,6 @@ public:
             vector<vector<int>>visited(m,vector<int>(n,0));
             dfs(v,0,i,'U',visited,sol);
             ans.push_back(sol);
-            
         }
         return ans;
     }
