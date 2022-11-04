@@ -3,22 +3,24 @@ public:
     int trap(vector<int>& v) {
         int n=v.size();
         int ans=0;
-        stack<int>s;
+        vector<int>mx(n);
+        vector<int>mn(n);
+        int m=0;
         for(int i=0;i<n;i++){
-            while(s.size() && v[s.top()]<=v[i]){
-                int t = s.top();
-                s.pop();
-                if(s.size()){
-                    int x = v[s.top()];
-                    int height = min(x,v[i]);
-                    int dis = i - s.top()-1;
-                    ans+=(height*dis - (dis*v[t]));
-                }
-            }
-            // cout<<ans<<endl;
-            s.push(i);
+            mx[i] = m;
+            m = max(m,v[i]);
         }
-    
-    return ans;
+        m=0;
+        for(int i=n-1;i>=0;i--){
+            mn[i] = m;
+            m = max(m,v[i]);
+        }
+        for(int i=0;i<n;i++){
+            cout<<mn[i]<<" "<<mx[i]<<endl;
+            int t = min(mn[i],mx[i]);
+            if(t>=v[i])
+            ans+=(t-v[i]);
+        }
+        return ans;
     }
 };
