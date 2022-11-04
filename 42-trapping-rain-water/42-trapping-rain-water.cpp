@@ -16,7 +16,7 @@ public:
             m = max(m,v[i]);
         }
         for(int i=0;i<n;i++){
-            cout<<mn[i]<<" "<<mx[i]<<endl;
+            // cout<<mn[i]<<" "<<mx[i]<<endl;
             int t = min(mn[i],mx[i]);
             if(t>=v[i])
             ans+=(t-v[i]);
