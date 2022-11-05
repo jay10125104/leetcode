@@ -2,7 +2,7 @@ struct Segtree
 {
     vector<int> v;
     vector<int>tree;
-    Segtree(vector<int> arr)
+    Segtree(vector<int>&arr)
     {
         v = arr;
         int n=v.size();
