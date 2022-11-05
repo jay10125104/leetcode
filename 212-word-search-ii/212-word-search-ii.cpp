@@ -61,7 +61,7 @@ public:
                 ans(v,temp,i,j,visited,sol2);
             }
         }
-        for(auto i:sol2){
+        for(auto &i:sol2){
             sol.push_back(i);
         }
         return sol;
