@@ -26,7 +26,7 @@ public:
     void increment(int k, int val) {
         stack<int>st;
         k = min(k,(int)s.size());
-        while(s.size()){
+        while(s.empty()==false){
             if(s.size()<=k){
                 st.push(s.top()+val);
             }
@@ -35,7 +35,7 @@ public:
             }
             s.pop();
         }
-        while(st.size()){
+        while(st.empty()==false){
             s.push(st.top());
             st.pop();
         }
