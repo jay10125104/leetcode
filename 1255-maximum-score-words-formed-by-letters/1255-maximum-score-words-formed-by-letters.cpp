@@ -1,8 +1,12 @@
 class Solution {
 public:
+    map<pair<int,vector<int>>,int>dp;
     int ans(int idx,vector<string>&words,vector<int>v,vector<int>&score){
         if(idx==words.size()){
             return 0;
+        }
+        else if(dp.find({idx,v})!=dp.end()){
+            return dp[{idx,v}];
         }
         int pick = INT_MIN;
         int npick = ans(idx+1,words,v,score);
@@ -32,6 +36,8 @@ public:
         for(auto &i:letters){
             v[i-'a']++;
         }
-        return ans(0,words,v,score);
+        int x = ans(0,words,v,score);
+        cout<<dp.size();
+        return x;
     }
 };
