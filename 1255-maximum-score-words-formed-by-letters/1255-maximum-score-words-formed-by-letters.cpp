@@ -29,7 +29,7 @@ public:
             }
             pick = mid + ans(idx+1,words,vi,score);
         }
-        return max(pick,npick);
+        return dp[{idx,v}] = max(pick,npick);
     }
     int maxScoreWords(vector<string>& words, vector<char>& letters, vector<int>& score) {
         vector<int>v(26,0);
@@ -37,7 +37,7 @@ public:
             v[i-'a']++;
         }
         int x = ans(0,words,v,score);
-        cout<<dp.size();
+        cout<<dp.size()<<" ";
         return x;
     }
 };
