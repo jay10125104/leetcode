@@ -3,13 +3,8 @@ public:
     int minNumberOperations(vector<int>& target) {
         stack<int>s;
         int ans = target[0];
-        for(int i=0;i<target.size();i++){
-            while(s.size() && s.top()<target[i]){
-                ans+=(target[i]-s.top());
-                s.pop();
-                s.push(target[i]);
-            }
-            s.push(target[i]);
+        for(int i=1;i<target.size();i++){
+            ans+=max(0,target[i]-target[i-1]);
             // cout<<ans<<" ";
         }
         return ans;
