@@ -29,7 +29,7 @@ public:
             }
             pick = mid + ans(idx+1,words,vi,score);
         }
-        return dp[{idx,v}] = max(pick,npick);
+        return max(pick,npick);
     }
     int maxScoreWords(vector<string>& words, vector<char>& letters, vector<int>& score) {
         vector<int>v(26,0);
