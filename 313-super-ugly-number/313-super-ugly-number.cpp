@@ -9,7 +9,7 @@ public:
         for(int i=1;i<n;i++){
             long long int mn = INT_MAX;
             for(int j=0;j<p.size();j++){
-                mn = min(mn,(long long int)((long long int)p[j]*(long long int)dp[pointer[j]]));
+                mn = min(mn,(p[j]*dp[pointer[j]]));
             }
             for(int j=0;j<p.size();j++){
                 if((p[j]*dp[pointer[j]])==mn){
