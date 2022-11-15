@@ -8,13 +8,13 @@ public:
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 int sum=0;
-                for(int p = i-k;p<=i+k;p++){
-                    for(int q = j-k;q<=j+k;q++){
-                        if(p>=0 && p<m && q>=0 && q<n){
+                // cout<<max(0,i-k)<<" "<<min(i+k,m)<<endl;
+                for(int p = max(0,i-k);p<=min(i+k,m-1);p++){
+                    for(int q = max(0,j-k);q<=min(j+k,n-1);q++){
                             sum+=v[p][q];
-                        }
                     }
                 }
+                // cout<<"df";
                 dp[i][j] = sum;
             }
         }
