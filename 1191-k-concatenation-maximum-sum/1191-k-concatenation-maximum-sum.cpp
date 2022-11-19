@@ -17,7 +17,7 @@ public:
     }
     int kConcatenationMaxSum(vector<int>&v, int k) {
         long long int sum=0;
-        for(auto i:v){
+        for(auto &i:v){
             sum+=i;
         }
         if(k==1){
