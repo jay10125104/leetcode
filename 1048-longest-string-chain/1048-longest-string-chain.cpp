@@ -16,16 +16,15 @@ public:
             int sz = s.size();
             dp[i]=1;
             for(int j=i-1;j>=0;j--){
-                string t = v[j];
-                if((sz-t.size())>=2){
+                if((sz-v[j].size())>=2){
                     break;
                 }
-                else if(sz-t.size()){
+                else if(sz-v[j].size()){
                     int x=0;
                     int y=0;
                     int sol=0;
-                    while(x<sz && y<t.size()){
-                        if(s[x]!=t[y]){
+                    while(x<sz && y<v[j].size()){
+                        if(s[x]!=v[j][y]){
                             sol++;
                             x++;
                         }
