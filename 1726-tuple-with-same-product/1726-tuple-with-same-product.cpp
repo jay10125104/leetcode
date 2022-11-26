@@ -9,7 +9,7 @@ public:
             }
         }
         int ans=0;
-        for(auto &i:m){
+        for(auto i:m){
             int k = i.second;
             ans+=(((i.second*(i.second-1)))/2)*8;
         }
