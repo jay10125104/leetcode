@@ -1,41 +1,16 @@
 class Solution {
 public:
+    // int dp[400001][3];
     int maxSumDivThree(vector<int>& nums) {
-        map<int,vector<int>>m;
-        int sum=0;
-        for(auto &i:nums){
-            m[(i%3)].push_back(i);
-            sum+=i;
-        }
-        sort(m[1].begin(),m[1].end());
-        sort(m[2].begin(),m[2].end());
-        if(sum%3==0){
-            return sum;
-        }
-        else{
-            if(sum%3==2){
-                int ans = 0;
-                if(m[1].size()>=2){
-                    int x = m[1][0]+m[1][1];
-                    ans = max(ans,sum-x);
-                }
-                if(m[2].size()>=1){
-                    ans = max(ans,sum-m[2][0]);
-                }
-                return ans;
-            }
-            else{
-                int ans = 0;
-                if(m[1].size()){
-                    int x = m[1][0];
-                    ans = max(ans,sum-x);
-                }
-                if(m[2].size()>=2){
-                    ans = max(ans,sum-m[2][1]-m[2][0]);
-                }
-                return ans;
+        int n=nums.size();
+        vector<vector<int>>dp(100001,vector<int>(3,INT_MIN));
+        dp[0][0]=0;
+        for(int i=1;i<=nums.size();i++){
+            for(int j=0;j<3;j++){
+                dp[i][j]=dp[i-1][j];
+                dp[i][j] = max(dp[i][j],nums[i-1]+dp[i-1][(j+nums[i-1])%3]);
             }
         }
-        
+        return dp[n][0];
     }
 };
