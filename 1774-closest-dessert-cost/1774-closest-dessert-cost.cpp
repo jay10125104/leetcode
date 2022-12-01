@@ -4,7 +4,7 @@ public:
         int n=v.size();
         int ans=INT_MAX;
         int diff = INT_MAX;
-        for(auto &it:v){
+        for(auto it:v){
             int x = it;
             int a =pow(2,t.size());
             for(int i=0;i<a;i++){
@@ -37,6 +37,9 @@ public:
                     }
                     else if(diff==mid3){
                         ans = min(ans,sol);
+                    }
+                    if(diff==0){
+                        return target;
                     }
                     
                     
