@@ -2,6 +2,8 @@ class Solution {
 public:
     int maxAbsoluteSum(vector<int>& v) {
         int n =v.size();
+        // we can either take min or max value in 2 way kadane algo.
+        
         int ans1=0;
         int sum1=0;
         for(auto &i:v){
