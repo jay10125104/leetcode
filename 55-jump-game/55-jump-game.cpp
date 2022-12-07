@@ -3,19 +3,18 @@ public:
     int dp[100001];
     int ans(vector<int>&nums,int idx)
     {
-        if(idx==nums.size()-1){
+        if(idx>=nums.size()-1){
             return 1;
         }
-        else if(nums[idx]==0){
-            return 0;
-        }
+        // else if
         else if(dp[idx]!=-1){
             return dp[idx];
         }
         else{
+            
             for(int i=1;i<=nums[idx];i++){
                 if(ans(nums,idx+i)){
-                    return dp[idx] = 1;
+                    return dp[idx]=1;
                 }
             }
             return dp[idx] = 0;
