@@ -16,7 +16,7 @@ public:
                     int t = visited;
                     t = t|x;
                     int count=0;
-                    cout<<idx<<" "<<t<<" "<<endl;
+                    // cout<<idx<<" "<<t<<" "<<sol<<endl;
                     for(int j=0;j<s[0].size();j++){
                             if(s[idx][j]==m[i][j]){
                                 count++;
