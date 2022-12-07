@@ -13,7 +13,6 @@ public:
             return dp[idx];
         }
         else{
-            int flag=false;
             for(int i=1;i<=nums[idx];i++){
                 if(ans(nums,idx+i)){
                     return dp[idx] = 1;
