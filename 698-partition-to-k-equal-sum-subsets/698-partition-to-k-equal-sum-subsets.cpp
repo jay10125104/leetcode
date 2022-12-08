@@ -15,14 +15,17 @@ public:
                     continue;
                 }
                 int sum=0;
-                for(int j=0;j<16;j++){
-                    int Mask = pow(2,j);
-                    if(Mask&i){
-                        sum+=nums[j];
+                int t = i;
+                int counter=0;
+                while(t){
+                    if(t&1){
+                        sum+=nums[counter];
                     }
                     if(sum>target){
                         break;
                     }
+                    counter++;
+                    t =t/2;
                 }
                 if(sum==target){
                     if(ans(nums,count+1,k,mask|i,target)){
