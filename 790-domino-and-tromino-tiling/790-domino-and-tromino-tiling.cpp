@@ -2,7 +2,7 @@ class Solution {
 public:
 int dp[1001][5];
 int mod=1000000007;
-void helper(vector<int>&mid,int mask){
+void helper(vector<int>&mid,int &mask){
         if(mask==0){
             mid.push_back(0);
             mid.push_back(1);
