@@ -28,24 +28,22 @@ public:
 
         prev=n-1;
         i=n-2;
+        int last=n-1;
         while(i>=0){
             if(visited[i]){
                 i--;
                 continue;
             }
             if((v[prev]-v[i])>k){
-                    int t=i+1;
-                    while(visited[t]==1 && t<=(n-1)){
-                        t++;
-                    }
-                if(t==prev){
+                if(prev==last){
                     return false;
                 }
                 else{
-                    prev = t;
+                    prev = last;
                 }
                 }
 else{
+    last = i;
             i--;
         }
             }
