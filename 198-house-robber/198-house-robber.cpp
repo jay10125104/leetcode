@@ -1,40 +1,15 @@
 class Solution {
 public:
-    int ans(vector<int>&nums,int idx,vector<int>&dp){
-        if(idx == -1){
-            dp[idx+1] = 0;
-            
-            
-            return 0;
-        }
-        if(idx==0){
-            dp[idx+1]=nums[0];
-            return nums[0];
-        }
-        if(dp[idx+1]>=0){
-            return dp[idx+1];
-        }
-        int pick = nums[idx] + ans(nums,idx-2,dp);
-        int nonpick = ans(nums,idx-1,dp);
-        
-        int x = max(pick,nonpick);
-        dp[idx+1] = x;
-        return x;
-    }
-    int rob(vector<int>& nums) {
-        vector<int>dp(nums.size(),0);
-        dp[0] = nums[0];
-        for(int i=1;i<nums.size();i++){
-            int pick  = nums[i];
-            if(i>=2){
-                pick+=dp[i-2];
-            }
-            int non = dp[i-1];
-            dp[i] = max(pick,non);
-            
-        }
-        
-        return dp[nums.size()-1];
-        
+    int rob(vector<int>& nums){
+        int n=nums.size();
+        int dp[n][2];
+        memset(dp,0,sizeof(dp));
+        dp[0][0] = nums[0];
+        dp[0][1] = 0;
+        for(int i=1;i<n;i++){
+            dp[i][0] = dp[i-1][1] + nums[i];
+            dp[i][1] = max(dp[i-1][0],dp[i-1][1]);
+         }
+        return max(dp[n-1][0],dp[n-1][1]);
     }
 };
