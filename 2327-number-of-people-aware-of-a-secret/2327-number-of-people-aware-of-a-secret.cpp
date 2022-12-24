@@ -9,7 +9,6 @@ public:
             for(int j=delay;j<forget && ((i+j)<n);j++){
                 dp[i+j] = (dp[i]%mod+dp[i+j]%mod)%mod;
             }
-            cout<<dp[i]<<" "<<endl;
         }
         int i=n-1;
         int ans=0;
