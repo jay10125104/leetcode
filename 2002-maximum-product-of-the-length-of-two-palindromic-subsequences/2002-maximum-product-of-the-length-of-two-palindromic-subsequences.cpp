@@ -45,8 +45,6 @@ public:
                     two+=s[j];
                 }
             }
-            // if(one=="tottot")
-            // cout<<one<<" "<<two<<" "<<sol(one)<<" "<<sol(two)<<endl;
             ans = max({ans,sol(one)*sol(two)});
         }
         return ans;
