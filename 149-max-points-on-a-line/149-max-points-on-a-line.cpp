@@ -1,32 +1,20 @@
 class Solution {
 public:
-    int maxPoints(vector<vector<int>>& v) {
-        double slope;
-        int n=v.size();
-        int ans=0;
-        for(int i=0;i<n;i++){
-            map<double,int>m;
-            double x,y;
-            int ma=0;
-            int same=1;
-            for(int j=i+1;j<n;j++){
-                if(v[i][0]==v[j][0]&&v[i][1]==v[j][1]){
-                    same++;
-                    continue;
+    int maxPoints(vector<vector<int>>& p) {
+        int n = p.size();
+        if(n<=2)return n;
+        int maxi = 2;
+        for(int i =0;i<n-1;i++){
+            for(int j = i+1;j<n;j++){
+                int t = 2;
+                for(int k = 0;k<n;k++){
+                    if(k!=i && k!=j){
+                        if((p[k][1]-p[j][1])*(p[i][0]-p[k][0])==(p[i][1] - p[k][1])*(p[k][0]-p[j][0]))t++;
+                    }
                 }
-                x=v[i][0]-v[j][0];
-                y=v[i][1]-v[j][1];
-                if(x==0){
-                    slope=INT_MAX;
-                }
-                else{
-                    slope=y/x;
-                }
-                m[slope]=m[slope]+1;
-                if(m[slope]>ma) ma=m[slope];
+                maxi = max(t,maxi);
             }
-            ans=max(ma+same,ans);
         }
-        return ans;
+        return maxi;
     }
 };
