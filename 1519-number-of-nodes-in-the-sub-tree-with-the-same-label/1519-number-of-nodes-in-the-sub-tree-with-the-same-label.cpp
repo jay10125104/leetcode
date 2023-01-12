@@ -1,12 +1,12 @@
 class Solution {
 public:
-vector<int>ans;
-    vector<int> dfs(vector<int>adj[],vector<int>&visited,int src,string &s){
+
+    vector<int> dfs(vector<int>adj[],vector<int>&visited,int src,string &s,vector<int>&ans){
         visited[src]=1;
         vector<int>t(26);
         for(auto &i:adj[src]){
             if(visited[i]==0){
-                vector<int>mid=dfs(adj,visited,i,s);
+                vector<int>mid=dfs(adj,visited,i,s,ans);
                 int count=0;
                 for(auto &j:mid){
                     t[count]+=j;
@@ -25,8 +25,8 @@ vector<int>ans;
             adj[i[1]].push_back(i[0]);
         }
         vector<int>visited(n);
-        ans.resize(n);
-    dfs(adj,visited,0,s);
+        vector<int>ans(n);
+    dfs(adj,visited,0,s,ans);
         return ans;
     }
 };
