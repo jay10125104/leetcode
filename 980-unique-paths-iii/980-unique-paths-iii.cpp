@@ -21,7 +21,7 @@ public:
             sol+=ans(v,i,j+1,x,y,t,count+1,m,n);
             sol+=ans(v,i,j-1,x,y,t,count+1,m,n);
             visited[i][j]=0;
-            return dp[i][j][count] = sol;
+            return sol;
         }
         
     }
