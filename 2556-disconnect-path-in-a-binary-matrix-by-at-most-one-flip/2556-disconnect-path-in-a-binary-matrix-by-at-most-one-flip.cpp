@@ -21,12 +21,7 @@ public:
         if(dfs(grid,0,0)==false){
             return true;
         }
-        for(auto &i:grid){
-            for(auto &j:i){
-                cout<<j<<" ";
-            }
-            cout<<endl;
-        }
+        
         grid[0][0]=1;
         if(dfs(grid,0,0)==false){
             return true;
