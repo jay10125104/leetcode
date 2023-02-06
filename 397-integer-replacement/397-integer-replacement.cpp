@@ -7,10 +7,10 @@ public:
         }
         
         else if(n%2){
-            return m[n] = (long long int)(1+min(ans(n-1),ans(n+1)));
+            return (long long int)(1+min(ans(n-1),ans(n+1)));
         }
         else{
-            return m[n] = 1+ans(n/2);
+            return 1+ans(n/2);
         }
     }
     int integerReplacement(int n) {
