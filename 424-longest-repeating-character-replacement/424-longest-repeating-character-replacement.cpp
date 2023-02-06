@@ -21,6 +21,8 @@ public:
                     }
                     else{
                         m[s[j]]--;
+                        if(m[s[j]]==0)
+                        if(m.erase(s[j]));
                         j++;
                     }
                 }
