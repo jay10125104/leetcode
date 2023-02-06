@@ -5,9 +5,7 @@ public:
         if(n==1){
             return 0;
         }
-        else if(m.find(n)!=m.end()){
-            return m[n];
-        }
+        
         else if(n%2){
             return m[n] = (long long int)(1+min(ans(n-1),ans(n+1)));
         }
