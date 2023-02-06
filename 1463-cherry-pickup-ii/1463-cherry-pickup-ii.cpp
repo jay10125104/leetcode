@@ -19,9 +19,9 @@ public:
        
         vector<int>dir= {-1,0,1};
         long long int mx=0;
-        for(int p=0;p<3;p++){
-            for(int q=0;q<3;q++){
-                mx = max(mx,ans(v,i+1,j+dir[p],a+1,b+dir[q]));
+        for(auto &p:dir){
+            for(auto &q:dir){
+                mx = max(mx,ans(v,i+1,j+p,a+1,b+q));
             }
         }
        if(i==a && j==b){
