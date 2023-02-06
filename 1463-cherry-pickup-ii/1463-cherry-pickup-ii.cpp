@@ -5,6 +5,9 @@ public:
         if(i<0 || j<0 || a<0 || b<0 || i>=v.size() || a>=v.size() || j>=v[0].size() || b>=v[0].size()){
             return 0;
         }
+         if(dp[i][j][a][b]!=-1){
+            return dp[i][j][a][b];
+        }
         if(i==(v.size()-1)){
             if(i==a && j==b){
            return v[i][j] ;
@@ -13,9 +16,7 @@ public:
            return v[i][j] + v[a][b] ;
             }
         }
-        if(dp[i][j][a][b]!=-1){
-            return dp[i][j][a][b];
-        }
+       
         vector<int>dir= {-1,0,1};
         long long int mx=0;
         for(int p=0;p<3;p++){
