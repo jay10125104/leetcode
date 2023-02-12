@@ -3,7 +3,7 @@ public:
     vector<vector<int>> substringXorQueries(string s, vector<vector<int>>& q) {
         map<string,int>m;
         for(int i=0;i<s.size();i++){
-            for(int j=1;j<=32;j++){
+            for(int j=1;j<32;j++){
                 if((i+j)<=s.size()){
                     string mid = s.substr(i,j);
                     if(m.find(mid)==m.end()){
