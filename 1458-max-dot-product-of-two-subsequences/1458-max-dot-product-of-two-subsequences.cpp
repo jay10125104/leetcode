@@ -1,7 +1,7 @@
 class Solution {
 public:
-    int dp[501][501][2];
-    int ans(vector<int>&nums1,vector<int>&nums2,int idx1,int idx2,int cnt1){
+    long long int dp[501][501][2];
+    long long int ans(vector<int>&nums1,vector<int>&nums2,int idx1,int idx2,int cnt1){
         if((idx1==nums1.size() || nums2.size()==idx2) && (cnt1==0)){
             return INT_MIN;
         }
