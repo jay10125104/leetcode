@@ -11,9 +11,6 @@ public:
             }
             return;
         }
-        else if(dp[idx][mask]!=-1){
-            return;
-        }
         if(mask&(1<<idx)){
             sol(n,req,people,idx+1,mask,v);
         }
