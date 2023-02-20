@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int>ans;
     int mx=INT_MAX;
-    int dp[61][1<<16];
+    // int dp[61][1<<16];
     void sol(int n,vector<int>&req,vector<int>&people,int idx,int mask,vector<int>&v){
         if(idx==n){
             if(v.size()<mx){
@@ -43,7 +43,7 @@ public:
             workers.push_back(mask);
         }
         vector<int>v;
-        memset(dp,-1,sizeof(dp));
+        // memset(dp,-1,sizeof(dp));
         sol(count,req,workers,0,0,v);
         return ans;
         
