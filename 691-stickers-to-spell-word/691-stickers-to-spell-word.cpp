@@ -1,7 +1,7 @@
 class Solution {
 public:
     long long int dp[51][1<<16];
-    long long int ans(vector<string>&s,string target,int idx,int mask){
+    long long int ans(vector<string>&s,string &target,int idx,int mask){
         if(idx==s.size()){
             int x = __builtin_popcount(mask);
             // cout<<x<<" ";
