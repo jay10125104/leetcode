@@ -1,39 +1,43 @@
 class Solution {
 private:
-    void dfs1(vector<int> adj[], vector<int>& child, int length, int root, vector<int>& visited,vector<int> &ans){
-        visited[root] = 1;
-        ans[0] += length;
-        length++;
-        for(auto& x: adj[root]){
-            if(visited[x]) continue;
-            dfs1(adj, child, length, x, visited, ans);
-            child[root] += child[x];
-        }
-        child[root] += 1;
-    }
-    
-    void dfs2(vector<int> adj[], vector<int>& child, int root, vector<int>& visited, int n, vector<int>& ans){
-        visited[root] = 1;
-        for(auto& x: adj[root]){
-            if(visited[x]) continue;
-            ans[x] = ans[root] - child[x] + n - child[x];
-            dfs2(adj , child, x, visited, n, ans);
-        }
-    }
+    int size[30001];
+    int ans[30001];
 public:
+    int dfs(vector<int>adj[],int src,int parent,int level){
+        int sz=0;
+        ans[0]+=level;
+        for(auto &i:adj[src]){
+            if(i!=parent){
+                sz+=(dfs(adj,i,src,level+1));
+            }
+        }
+        return size[src] = sz+1;
+    }
+    void dfs1(vector<int>adj[],int src,int parent,int n){
+        for(auto &i:adj[src]){
+            if(parent!=i){
+                    ans[i] = ans[src]+(n)-(2*size[i]);
+                    dfs1(adj,i,src,n);
+            }
+        }
+    }
     vector<int> sumOfDistancesInTree(int n, vector<vector<int>>& edges) {
         
         vector<int> adj[n];
+         memset(size,0,sizeof(size));
+        memset(ans,0,sizeof(ans));
         for(auto& edge: edges){
             adj[edge[0]].push_back(edge[1]);
             adj[edge[1]].push_back(edge[0]);
         }
-        vector<int> ans(n), child(n), visited(n);
-        dfs1(adj , child, 0, 0, visited, ans);
-        for(int i=0;i<n;i++)visited[i]=0;
-        
-        dfs2(adj , child, 0, visited, n, ans);
-        return ans;
+        dfs(adj,0,-1,0);
+        dfs1(adj,0,-1,n);
+       
+        vector<int>answer;
+        for(int i=0;i<n;i++){
+            answer.push_back(ans[i]);
+        }
+        return answer;
     }
     
 };
