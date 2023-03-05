@@ -33,7 +33,7 @@ public:
             }
             v.push_back(sum);
         }
-        sort(v.begin(),v.end(),greater<long long int>());
+        sort(v.rbegin(),v.rend());
         // cout<<v.size();
        if(v.size()<k){
            return -1;
