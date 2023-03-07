@@ -11,7 +11,7 @@ public:
         long long int low =0;
         int n=time.size();
         sort(time.begin(),time.end());
-        long long int high = ((long long int)time[n-1]*(long long int)k);
+        long long int high = 1e14;
         long long int ans = -1;
         while(low<=high){
             long long int mid = (low+high)/2;
