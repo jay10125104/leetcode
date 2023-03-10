@@ -25,9 +25,7 @@ void factorial(){
     }
 }
 long long int ans(int n,int r){
-    if(n<r){
-        return 1;
-    }
+
     long long int n_r=n-r;
     long long int n_r_inverse = binaryexpo(fact[n_r],m-2);
     long long int r_inverse = binaryexpo(fact[r],m-2);
@@ -46,7 +44,6 @@ long long int ans(int n,int r){
                 total+=sz[i];
                 ways[src] = op2(ways[src],ways[i],m);
                 ways[src] = op2(ways[src],ans(total,sz[i]),m);
-                // ways[src] = ways[src]*ways[i]*);
             }
         }
         sz[src]=total+1;    
