@@ -24,12 +24,8 @@ public:
             m[sum]--;
             if(req==0){
                 count++;
-                count+=m[0];
             }
-            else if(m[req]){
                 count+=m[req];
-                // count+=m[0];
-            }
             sum-=root->val;
         }
     }
