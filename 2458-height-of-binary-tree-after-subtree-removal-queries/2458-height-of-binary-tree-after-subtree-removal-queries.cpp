@@ -90,13 +90,12 @@ public:
         memset(starting,0,sizeof(starting));
         memset(ending,0,sizeof(ending));
         memset(arr,0,sizeof(arr));
-        dfs(root,1);
+        dfs(root,0);
         vector<int>v;
         for(int i=0;i<t;i++){
             v.push_back(arr[i]);
             // cout<<arr[i]<<" ";
         }
-        
         Segtree s=Segtree(v);
         s.build(1,0,t-1);
         vector<int>ans;
@@ -104,7 +103,7 @@ public:
             int start=starting[i];
             int end=ending[i];
             // cout<<start<<" "<<end<<endl;
-            ans.push_back(-1+max(s.query(1,0,start-1,0,t-1),s.query(1,end+1,t-1,0,t-1)));
+            ans.push_back(max(s.query(1,0,start-1,0,t-1),s.query(1,end+1,t-1,0,t-1)));
         }
         return ans;
     }
