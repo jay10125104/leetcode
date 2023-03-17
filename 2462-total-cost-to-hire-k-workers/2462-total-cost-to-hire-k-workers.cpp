@@ -6,16 +6,13 @@ public:
         int i=0;
         int j=v.size()-1;
         long long int ans=0;
-        vector<int>visited(v.size());
               while(c--){
-            while(p1.size()!=k && i<v.size() && i<=j && visited[i]==0){
+            while(p1.size()!=k && i<=j ){
                 p1.push(v[i]);
-                visited[i]=1;
                 i++;
             }
-            while(p2.size()!=k && j>=0 && j>=i && visited[j]==0){
+            while(p2.size()!=k && j>=i){
                 p2.push(v[j]);
-                visited[j]=1;
                 j--;
             }
             int x = INT_MAX;
