@@ -17,8 +17,9 @@ public:
         vector<long long int>ans(n);
         for(int i=n-1;i>=0;i--){
             q.push(v[i].second);
-            ans[i]=sum;
             sum+=v[i].second;
+            ans[i]=sum;
+            
             if(q.size()>=k){
                 sum-=q.top();
                 q.pop();
@@ -28,7 +29,7 @@ public:
         }
         long long int sol=0;
         for(int i=0;i<v.size()-k+1;i++){
-            sol = max(sol,(long long int)v[i].first*(v[i].second+ans[i]));
+            sol = max(sol,(long long int)v[i].first*(ans[i]));
             // cout<<sol<<" ";
         }
         // cout<<endl;
