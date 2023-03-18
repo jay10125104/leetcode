@@ -5,22 +5,22 @@ public:
     data_struct(){
 
     }
-    void insert(int x){
+    void insert(int &x){
         m.insert(x);
     }
-    void remove(int x){
+    void remove(int &x){
         m.erase(m.find(x));
     }
-    void erase(int x){
+    void erase(int &x){
         m.erase(x);
     }
-    bool count(int x){
+    bool count(int &x){
         return m.count(x);
     }
     int size(){
         return m.size();
     }
-    int lower_bound(int x){
+    int lower_bound(int &x){
         auto it =  m.lower_bound(x);
         if(it==m.end()){
             return -1;
@@ -29,7 +29,7 @@ public:
             return *it;
         }
     }
-    auto upper_bound(int x){
+    auto upper_bound(int &x){
         auto it =  m.upper_bound(x);
         if(it==m.end()){
             return -1;
@@ -55,12 +55,10 @@ public:
             int mx = d.max();
             int mn = d.min();
             while((mx-mn)>limit){
-                // cout<<mx<<" "<<mn<<endl;
                 d.remove(nums[j++]);
                 mx=d.max();
                 mn=d.min();
             }
-            // cout<<i<<"*"<<j<<endl;
             ans=max(ans,i-j+1);
             i++;
         }
