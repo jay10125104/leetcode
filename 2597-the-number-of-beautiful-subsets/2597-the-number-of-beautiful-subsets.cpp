@@ -24,7 +24,7 @@ public:
         
     }
     int beautifulSubsets(vector<int>& v, int k) {
-       // memset(dp,-1,sizeof(dp));
+       // vector<vector<int>>dp((1<<v.size()),vector<int>(v.size(),-1));
         long long int mask=0;
         sort(v.begin(),v.end());
         return ans(v,mask,0,k)-1;
