@@ -20,7 +20,7 @@ public:
                 ans++;
                 v[i]=1;
             }
-            cout<<i<<" "<<ans<<endl;
+            // cout<<i<<" "<<ans<<endl;/
         }
         
         return ans>=n;
