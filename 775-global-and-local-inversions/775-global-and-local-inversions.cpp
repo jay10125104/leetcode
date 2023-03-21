@@ -1,54 +1,52 @@
-struct seg{
-    vector<int>tree;
-    seg(int n){
-        vector<int>t(n*4);
-        tree=t;
-    }
-    void update(int node,int start,int end,int idx){
-        if(start==end){
-            tree[node]=1;
-        }
-        else{
-            int mid = (start+end)/2;
-            if(idx<=mid){
-                update(node*2,start,mid,idx);
-            }
-            else{
-                update(node*2+1,mid+1,end,idx);
-            }
-            tree[node] = tree[node*2] + tree[node*2+1];
-        }
-    }
-    long long int query(int node,int start,int end,int l,int r){
-        if(l>end || r<start){
-            return 0;
-        }
-        else if(start>=l && end<=r){
-            return tree[node];
-        }
-        else{
-            int mid=(start+end)/2;
-            long long int x = query(node*2,start,mid,l,r);
-            long long int y = query(node*2+1,mid+1,end,l,r);
-            return x+y;
-        }
-    }
-};
 class Solution {
 public:
-    bool isIdealPermutation(vector<int>& v) {
-        long long int count=0;
-        for(int i=1;i<v.size();i++){
-            count+=(v[i]<v[i-1]);
+    long long int global = 0;
+    long long int temp[1000000];
+    void merge(vector<int> &nums,int l,int mid,int r){
+        long long int i = l;
+        long long int j = mid+1;
+        long long int k = l;
+        
+        while(i<=mid and j <= r){
+            if(nums[i] <= nums[j]){
+                temp[k++] = nums[i++];
+            }
+            else{
+                temp[k++] = nums[j++];
+                global+=(mid-i+1);
+            }
         }
-        int n=v.size();
-        seg s = seg(n);
-        long long int count1=0;
-        for(int i=n-1;i>=0;i--){
-            int x = v[i];
-            count1+=(s.query(1,0,n-1,0,x-1));
-            s.update(1,0,n-1,x);
+        
+        while(i <= mid){
+            temp[k++] = nums[i++];
         }
-        return count1==count;
+        
+        while(j <= r){
+            temp[k++] = nums[j++];
+        }
+        
+        for(long long int i = l; i <= r;i++){
+            nums[i] = temp[i];
+        }
+    }
+    
+    void Mergesort(vector<int>&nums,int l,int r){
+        if(l>=r) return;
+        int mid = (l+r)/2;
+        
+        Mergesort(nums,l,mid);
+        Mergesort(nums,mid+1,r);
+        merge(nums,l,mid,r);
+    }
+    
+    bool isIdealPermutation(vector<int>& nums) {
+        int local = 0;
+        for(int i = 0; i < nums.size()-1; i++) {
+            if(nums[i] > nums[i+1])
+                local++;
+        }
+        Mergesort(nums,0,nums.size()-1);
+        
+        return global == local ? 1 : 0;
     }
 };
