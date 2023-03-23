@@ -3,16 +3,17 @@ public:
     int kthSmallest(vector<vector<int>>& mat, int k) {
         vector<int>temp = mat[0];
         for(int i=1;i<mat.size();i++){
-            vector<int>mid;
+            priority_queue<int>q;
             for(int j=0;j<mat[0].size();j++){
                 for(auto &k:temp){
-                    mid.push_back(k+mat[i][j]);
+                    q.push((k+mat[i][j])*(-1));
                 }
             }
-            sort(mid.begin(),mid.end());
             temp.clear();
-            for(int j=0;j<min(k,(int)mid.size());j++){
-                temp.push_back(mid[j]);
+            int mx = min((int)q.size(),k);
+            while(mx--){
+                temp.push_back(-1*(q.top()));
+                q.pop();
             }
             // temp=mid;/
         }
