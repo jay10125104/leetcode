@@ -32,7 +32,7 @@ public:
     void add(string name, int score) {
         q2.push({score,name});
         q1.push(q2.top());
-        cout<<q1.top().second<<endl;
+        // cout<<q1.top().second<<endl;
         q2.pop();
     }
     
