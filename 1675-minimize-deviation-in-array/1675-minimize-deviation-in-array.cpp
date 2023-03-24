@@ -59,7 +59,6 @@ public:
         int ans = INT_MAX;
         while(d.size()){
             int x = d.max();
-            // cout<<x<<endl;
             int mn=d.min();
                 ans = min(ans,x-mn);
             if(x%2){
