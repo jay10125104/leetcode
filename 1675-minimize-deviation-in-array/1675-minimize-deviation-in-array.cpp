@@ -66,7 +66,7 @@ public:
             }
             else{
                 
-                d.remove(x);
+                d.erase(x);
                 d.insert(x/2);
             }
         }
