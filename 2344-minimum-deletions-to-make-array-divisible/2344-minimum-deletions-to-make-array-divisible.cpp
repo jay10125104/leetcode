@@ -1,24 +1,25 @@
 class Solution {
 public:
-    int minOperations(vector<int>& nums, vector<int>& v) {
-        map<long long int,int>m;
-        for(auto &i:nums){
-            m[i]++;
+    int minOperations(vector<int>& nums, vector<int>& numsDivide) {
+        int gcd=numsDivide[0];
+        for(auto &i:numsDivide){
+            gcd = __gcd(gcd,i);
         }
-        long long int gcd=v[0];
-        for(int i=1;i<v.size();i++){
-            gcd = __gcd(gcd,(long long int)v[i]);
+        map<int,int>m;
+        for(auto num:nums){
+            m[num]++;
         }
-        long long int ans=0;
+        int ans=0;
         for(auto &i:m){
             int x = i.first;
-            if(gcd%x==0){
-                break;
+            int y = i.second;
+            if(gcd%x!=0){
+                ans+=y;
             }
             else{
-                ans+=i.second;
+                break;
             }
         }
-        return (ans==nums.size())?(-1):(ans);
+        return ((ans==nums.size())?(-1):(ans));
     }
 };
