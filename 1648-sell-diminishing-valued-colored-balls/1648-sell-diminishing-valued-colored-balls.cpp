@@ -24,7 +24,7 @@ public:
                 long long int diff = x-y;
                 long long int canmade = (diff)*level;
                 // int div = 
-                cout<<canmade<<endl;
+                // cout<<canmade<<endl;
                 if(canmade>=k){
                     long long int div = k/level;
                     long long int rem = k%level;
