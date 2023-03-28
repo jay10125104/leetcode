@@ -1,53 +1,40 @@
 class Solution {
 public:
-    int waysToMakeFair(vector<int>& v) {
-        int n=v.size();
-        int even[n];
-        int odd[n];
-        if(n==1){
-            return 1;
-        }
-        memset(even,0,sizeof(even));
-        memset(odd,0,sizeof(odd));
-        int e=0;
-        int o=0;
-        int sum=0;
-        for(int i=n-1;i>=0;i--){
-            even[i]=e;
-            odd[i]=o;
+    int waysToMakeFair(vector<int>& nums) {
+        vector<pair<int,int>>v;
+        int even=0;
+        int odd=0;
+        int n=nums.size();
+        for(int i=0;i<nums.size();i++){
+            v.push_back({even,odd});
+            
             if(i%2==0){
-                e+=v[i];
+                even+=nums[i];
             }
             else{
-                o+=v[i];
+                odd+=nums[i];
             }
-            sum+=v[i];
         }
-        // for(auto &i:odd){
-        //     cout<<i<<" "; 
-        // }
-        // cout<<endl;
-        // for(auto &i:even){
-        //     cout<<i<<" "; 
-        // }
-        // cout<<endl;
-        int ans = ((even[0]==odd[0])?(1):(0));
-        e = v[0];
-        o=0;
-        // cout<<ans<<endl;
-        for(int i=1;i<n;i++){
-            int nexteven = (odd[i]);
-            int nextodd = (even[i]);
-            // cout<<e<<" "<<o<<" "<<nexteven<<" "<<nextodd<<" "<<endl;
-            if((e+nexteven)==(o+nextodd)){
-                ans++;
-            }
-            if(i%2){
-                o+=v[i];
+        vector<pair<int,int>>t;
+        even=0;
+        odd=0;
+        for(int i=n-1;i>=0;i--){
+            t.push_back({odd,even});
+            if(i%2==0){
+                even+=nums[i];
             }
             else{
-                e+=v[i];
-            }
+                odd+=nums[i];
+            }   
+        }
+        reverse(t.begin(),t.end());
+        int ans=0;
+        for(int i=0;i<n;i++){
+            // cout<<v[i].first<<" "<<v[i].second<<" "<<t[i].first<<" "<<t[i].second<<endl;
+            int one=v[i].first+t[i].first;
+            int two=v[i].second+t[i].second;
+            // cout<<one<<" "<<two<<endl;
+            ans+=(one==two);
         }
         return ans;
     }
