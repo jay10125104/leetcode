@@ -5,13 +5,7 @@ public:
         int n=apples.size();
         int idx=0;
         priority_queue<pair<int,int>>q;
-        for(int i=0;i<=100000;i++){
-            // if(q.size()){
-            //     cout<<q.top().first<<" "<<q.top().second<<endl;
-            // }
-            // else{
-            //     cout<<"*\n";
-            // }
+        for(int i=0;i<=40000;i++){
             while(q.size() && (abs(q.top().first)<=i||q.top().second==0)){
                 q.pop();
             }
