@@ -1,8 +1,8 @@
 class Solution {
 public:
-    map<string,int>m;
-    bool check(string s,int sz){
-        map<string,int>m1;
+    unordered_map<string,int>m;
+    bool check(string &s,int sz){
+        unordered_map<string,int>m1;
         for(int i=0;i+sz<=s.size();i+=sz){
             string mid = s.substr(i,sz);
             m1[mid]++;
