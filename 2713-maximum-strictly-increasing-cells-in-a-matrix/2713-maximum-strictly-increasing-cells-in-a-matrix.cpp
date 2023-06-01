@@ -11,16 +11,15 @@ public:
                 idx[v[i][j]].push_back({i,j});
             }
         }
-        int dp[m][n];
         vector<int>t;
         for(auto &i:value){
             t.push_back(i.first);
         }
         sort(t.rbegin(),t.rend());
-        memset(dp,0,sizeof(dp));
+        // memset(dp,0,sizeof(dp));
         
-        map<int,int>row;
-        map<int,int>col;
+        unordered_map<int,int>row;
+        unordered_map<int,int>col;
         int ans=0;
         for(auto &i:t){
                 vector<int>mid;
