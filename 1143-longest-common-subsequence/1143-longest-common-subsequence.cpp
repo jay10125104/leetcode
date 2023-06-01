@@ -1,24 +1,27 @@
 class Solution {
 public:
-    int dp[1001][1001];
-    int ans(string &s,string &t,int idx1,int idx2){
-        if(idx1==s.size() || idx2==t.size()){
-            return 0;
-        }
-        else if(dp[idx1][idx2]!=-1){
-            return dp[idx1][idx2];
-        }
-        else{
-            if(s[idx1]==t[idx2]){
-                return 1+ans(s,t,idx1+1,idx2+1);
-            }
-            else{
-                return dp[idx1][idx2] = max(ans(s,t,idx1+1,idx2),ans(s,t,idx1,idx2+1));
-            }
-        }
-    }
     int longestCommonSubsequence(string s, string t) {
-        memset(dp,-1,sizeof(dp));
-        return ans(s,t,0,0);
+        int m=s.size();
+        int n=t.size();
+        int dp[m+1][n+1];
+        memset(dp,0,sizeof(dp));
+        dp[0][0]=1;
+        int ans=0;
+        for(int i=0;i<=m;i++){
+            for(int j=0;j<=n;j++){
+                if(i==0||j==0){
+                    dp[i][j]=1;
+                }
+                else if(s[i-1]==t[j-1]){
+                    dp[i][j]=dp[i-1][j-1]+1;
+                }
+                else{
+                    dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+                }
+                ans=max(ans,dp[i][j]);
+            }
+            
+        }
+        return ans-1;
     }
 };
