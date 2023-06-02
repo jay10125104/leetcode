@@ -1,30 +1,31 @@
 class Solution {
 public:
-    int dp[501][501];
-    int ans(string s,string t,int idx1,int idx2){
-        if(idx1==s.size() && idx2==t.size()){
-            return 0;
-        }
-        if(idx1==s.size()){
-            return t.size()-idx2;
-        }
-        else if(idx2==t.size()){
-            return s.size()-idx1;
-        }
-        else if(dp[idx1][idx2]!=-1){
-            return dp[idx1][idx2];
-        }
-        else{
-            if(s[idx1]==t[idx2]){
-                return dp[idx1][idx2] = ans(s,t,idx1+1,idx2+1);
-            }
-            else{
-                return dp[idx1][idx2] =1+min({ans(s,t,idx1+1,idx2),ans(s,t,idx1,idx2+1),ans(s,t,idx1+1,idx2+1)});
-            }
-        }
-    }
     int minDistance(string s, string t) {
-        memset(dp,-1,sizeof((dp)));
-        return  ans(s,t,0,0);
+        // swap(s,t);
+        int m=s.size();
+        int n=t.size();
+        int dp[m+1][n+1];
+        memset(dp,0,sizeof(dp));
+        for(int i=0;i<=m;i++){
+            for(int j=0;j<=n;j++){
+                if(i==0 && j==0){
+                    dp[i][j]=0;
+                }
+                else if(i==0||j==0){
+                    dp[i][j]=max(i,j);
+                }
+                else{
+                    if(s[i-1]==t[j-1]){
+                        dp[i][j]=dp[i-1][j-1];
+                    }
+                    else{
+                        dp[i][j]=min({dp[i-1][j],dp[i][j-1],dp[i-1][j-1]})+1;
+                    }
+                }
+                // cout<<dp[i][j]<<" ";
+            }
+            // cout<<endl;
+        }
+        return dp[m][n];
     }
 };
