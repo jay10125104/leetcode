@@ -9,12 +9,9 @@ public:
                 ans=max(ans,dfs(adj,i,src,time));
             }
         }
-        if(count){
             return time[src]+ans;
-        }
-        else{
-            return 0;
-        }
+        
+            
     }
     int numOfMinutes(int n, int headID, vector<int>& v, vector<int>& time) {
         int src=-1;
