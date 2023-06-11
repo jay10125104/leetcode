@@ -6,9 +6,11 @@ public:
     }
     
     void set(int index, int val) {
-        // mid.push_back(count);
-        // mid.push_back(val);
-        m[index].push_back({count,val});
+        // cout<<m[index].size()<<endl;
+        vector<int>mid;
+        mid.push_back(count);
+        mid.push_back(val);
+        m[index].push_back(mid);
     }
     
     int snap() {
