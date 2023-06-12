@@ -27,9 +27,9 @@ public:
             currptr = nextptr;
             count++;
         }
-        if(nextptr!=NULL){
+        
            head->next = reverseKGroup(nextptr,k); 
-        }
+        
         return prevptr;
     }
 };
