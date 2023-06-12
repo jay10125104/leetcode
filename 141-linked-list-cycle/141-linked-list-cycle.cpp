@@ -19,7 +19,7 @@ public:
          ListNode*fast = head->next;
         ListNode*slow = head;
         while(fast && fast->next && fast!=slow){
-            cout<<fast->val<<" "<<slow->val<<endl;
+            // cout<<fast->val<<" "<<slow->val<<endl;
             slow=slow->next;
             fast=fast->next->next;
         }
