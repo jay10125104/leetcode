@@ -17,31 +17,46 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-       map<Node*,Node*>m;
-       map<Node*,Node*>m1;
-        Node*ans = new Node(-1);
-        Node*sol = ans;
-        Node*temp=head;
-        while(temp){
-            Node*t = new Node(temp->val);
-            ans->next = t;
-            ans=ans->next;
-            m[ans]=temp;
-            m1[temp]=ans;
-            temp=temp->next;
+        Node*temp = head;
+        if(!temp){
+            return NULL;
         }
-        
-        sol=sol->next;
-        Node*temp1=sol;
-        Node*temp2=head;
-        while(temp2!=NULL){
-            Node*mid = m[temp1];
-            // cout<<mid->val<<endl;
-            temp1->random = m1[mid->random];
-            temp1=temp1->next;
-            temp2=temp2->next;
+        while(temp){
+            Node*mid = new Node(temp->val);
+            Node*nxt = temp->next;
+            temp->next=mid;
+            mid->next=nxt;
+            temp=temp->next->next;
+        }
+        temp=head;
+        while(temp){
+            if(temp->random)
+            temp->next->random = temp->random->next;
+            temp=temp->next->next;
+        }
+        Node*ans = head;
+        while(ans){
+            if(ans->random)
+            ans->next->random = ans->random->next;
+            ans=ans->next->next;
+        }
+        ans=head;
+        Node*sol = ans->next;
+        while(ans){
+            if(ans->next->next){
+                Node*mid=ans->next->next;
+                ans->next->next=ans->next->next->next;
+                ans->next=mid;
+                ans=ans->next;
+            }
+            else{
+                ans->next->next=NULL;
+                ans->next=NULL;
+                ans=ans->next;
+            }
         }
         return sol;
+    
         
     }
 };
