@@ -16,12 +16,12 @@ public:
         else{
             int x = ans(v,idx+1,sum);
             int y = ans(v,idx+1,sum+v[idx])+v[idx];
-            int z = v[idx]+ans(v,idx+1,sum-v[idx]);
+            int z = ans(v,idx+1,sum-v[idx]);
             return dp[idx][sum+5000]=max({x,y,z});
         }
     }
     int tallestBillboard(vector<int>& v) {
         memset(dp,-1,sizeof(dp));
-        return ans(v,0,0)/2;
+        return ans(v,0,0);
     }
 };
