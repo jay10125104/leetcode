@@ -58,6 +58,7 @@ public:
                     int newx = t[0]+it[0];   
                     int newy = t[1]+it[1];
                     if(newx>=0 && newx<v.size() && newy>=0 && newy<v[0].size()){
+                        if(v[newx][newy]!='#')
                         q.push({newx,newy,val});
                     }
                     
