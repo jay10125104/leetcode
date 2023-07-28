@@ -19,7 +19,9 @@ public:
                 else{
                     dp[i][j] = max(nums[i]+min(dp[i+2][j],dp[i+1][j-1]),nums[j]+min(dp[i+1][j-1],dp[i][j-2]));
                 }
+                cout<<dp[i][j]<<" ";
             }
+            cout<<endl;
         }
 
         return dp[0][n-1]>=(sum-dp[0][n-1]);
