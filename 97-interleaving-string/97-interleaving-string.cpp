@@ -21,7 +21,9 @@ public:
                         dp[i][j]|=dp[i][j-1];
                     }
                 }
+                cout<<dp[i][j]<<" ";
             }
+            cout<<endl;
         }
         return dp[s.size()][t.size()];
     }
