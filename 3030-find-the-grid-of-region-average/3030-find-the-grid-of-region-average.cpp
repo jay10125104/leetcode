@@ -1,56 +1,57 @@
 class Solution {
 public:
-    vector<vector<int>> resultGrid(vector<vector<int>>& image, int threshold) {
-        int n = image.size(), m = image[0].size();
-        vector<vector<vector<int>>> v(n, vector<vector<int>>(m));
-        vector<vector<int>> res(n, vector<int>(m));
-
-        for (int i = 0; i < n - 2; i++)
-        {
-
-            for (int j = 0; j < m - 2; j++)
-            {
-                int temp_sum = 0;
-                bool excluded = false;
-                for (int k = i; k < i + 3 && k < n; k++)
-                {
-                    for (int l = j; l < j + 3 && l < m; l++)
-                    {
-                        if (!(((k == i) || (abs(image[k - 1][l] - image[k][l]) <= threshold)) && ((k == i + 2) || (abs(image[k + 1][l] - image[k][l]) <= threshold)) && ((l == j) || (abs(image[k][l - 1] - image[k][l]) <= threshold)) && ((l == j + 2) || (abs(image[k][l + 1] - image[k][l]) <= threshold))))
-                        {
-                            excluded = true;
+    vector<vector<int>> resultGrid(vector<vector<int>>& v, int t) {
+        int m=v.size();
+        int n=v[0].size();
+        int mp[m][n];
+        int cnt[m][n];
+        memset(mp,0,sizeof(mp));
+        memset(cnt,0,sizeof(cnt));
+        // map<pair<int,int>,int>mp;
+        // map<pair<int,int>,int>cnt;
+        vector<vector<int>>dir={{0,-1},{-1,0},{1,0},{0,1}};
+        for(int i=1;i<m-1;i++){
+            for(int j=1;j<n-1;j++){
+                int count=0;
+                int sum=0;
+                for(int p=i-1;p<=(i+1);p++){
+                    for(int q=j-1;q<=(j+1);q++){
+                        int ans=0;
+                        for(auto &k:dir){
+                            int x=p+k[0];
+                            int y=q+k[1];
+                            if(x<(i-1)||y<(j-1)||x>(i+1)||y>(j+1)){
+                                ans++;
+                            }
+                            else{
+                                ans+=(abs(v[x][y]-v[p][q])<=t);
+                            }
                         }
-                        else
-                        {
-                            temp_sum += image[k][l];
-                            ;
-                        }
+                        count+=(ans==4);
+                        sum+=v[p][q];
                     }
                 }
-                if (!excluded)
-                {
-                    for (int k = i; k < i + 3 && k < n; k++)
-                    {
-                        for (int l = j; l < j + 3 && l < m; l++)
-                        {
-                            v[k][l].push_back(temp_sum / 9);
+                if(count==9){
+                    for(int p=i-1;p<=(i+1);p++){
+                        for(int q=j-1;q<=(j+1);q++){
+                            mp[p][q]+=sum/9;
+                            cnt[p][q]++;
                         }
                     }
                 }
             }
         }
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++)
-            {
-                int temp_sum = 0;
-                for (int x : v[i][j])
-                {
-                    temp_sum += x;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(cnt[i][j]!=0){
+                    // cout<<mp[{i,j}]<<" "<<cnt[{i,j}]<<endl;
+                    v[i][j]=mp[i][j]/cnt[i][j];
                 }
-                res[i][j] = v[i][j].size() == 0 ? image[i][j] : temp_sum / v[i][j].size();
+                else{
+                    
+                }
             }
         }
-        return res;
+        return v;
     }
 };
